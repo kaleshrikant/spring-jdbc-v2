@@ -1,17 +1,20 @@
 package com.spring.jdbc;
 
-import com.spring.jdbc.annot.DbConfig;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.beans.factory.BeanFactory;
+import org.springframework.beans.factory.xml.XmlBeanFactory;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 public class ClientApplication {
     public static void main(String[] args) {
 
-        AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext(DbConfig.class);
+        Resource resource = new ClassPathResource("connection.xml");
+        BeanFactory beanFactory = new XmlBeanFactory(resource);
 
-        JdbcTemplate jdbcTemplate = (JdbcTemplate) applicationContext.getBean("jdbcTemplate");
+        JdbcTemplate jdbcTemplate = (JdbcTemplate) beanFactory.getBean("jdbcTemplate");
 
-        jdbcTemplate.execute("INSERT INTO register.Persons VALUES(101, 'KALE', 'PRASHANT', 'MAHARASTRA', 'AMRAVATI')");
+        jdbcTemplate.execute("INSERT INTO register.Persons VALUES(101, 'KALE', 'SHRIKANT', 'MAHARASTRA', 'AMRAVATI')");
 
         System.out.println("Record inserted successfully.!");
 
