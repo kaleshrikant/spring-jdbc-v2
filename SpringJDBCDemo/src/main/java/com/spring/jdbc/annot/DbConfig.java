@@ -12,9 +12,16 @@ public class DbConfig {
     public DriverManagerDataSource getDataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
             dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
-            dataSource.setUsername("user");
+            dataSource.setUsername("shrikant");
             dataSource.setPassword("Kale@333");
-            dataSource.setUrl("jdbc:mysql://localhost:3306/springjdbc");
+            dataSource.setUrl("jdbc:mysql://localhost:3306/register");
         return dataSource;
+    }
+
+    @Bean("jdbcTemplate")
+    public JdbcTemplate getJdbcTemplate() {
+        JdbcTemplate jdbcTemplate = new JdbcTemplate();
+        jdbcTemplate.setDataSource(getDataSource());
+        return jdbcTemplate;
     }
 }

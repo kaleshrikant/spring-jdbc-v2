@@ -34,7 +34,16 @@ ____________________
       JdbcTemplate jdbcTemplate = (JdbcTemplate) beanFactory.getBean("jdbcTemplate");
     }`
       b. Using Annotation.
-        
+     `@Bean("jdbcTemplate")
+      public JdbcTemplate getJdbcTemplate() {
+      JdbcTemplate jdbcTemplate = new JdbcTemplate();
+      jdbcTemplate.setDataSource(getDataSource());
+      return jdbcTemplate;
+      }`
+    `AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext(DbConfig.class);
+      JdbcTemplate jdbcTemplate = (JdbcTemplate) applicationContext.getBean("jdbcTemplate");
+      jdbcTemplate.execute("INSERT INTO register.Persons VALUES(101, 'KALE', 'PRASHANT', 'MAHARASTRA', 'AMRAVATI')");
+      System.out.println("Record inserted successfully.!");`
 4. call the **JdbcTemplate** bean in client application and work with database.
 5. use **JdbcTemplate** methods to work with database.
 
