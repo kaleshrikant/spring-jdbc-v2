@@ -4,7 +4,7 @@ import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.xml.XmlBeanFactory;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
-import org.springframework.jdbc.datasource.DriverManagerDataSource;
+import org.springframework.jdbc.core.JdbcTemplate;
 
 public class ClientApplication {
     public static void main(String[] args) {
@@ -12,12 +12,11 @@ public class ClientApplication {
         Resource resource = new ClassPathResource("connection.xml");
         BeanFactory beanFactory = new XmlBeanFactory(resource);
 
-        DriverManagerDataSource driverManagerDataSource = (DriverManagerDataSource) beanFactory.getBean("dataSource");
+        JdbcTemplate jdbcTemplate = (JdbcTemplate) beanFactory.getBean("jdbcTemplate");
 
-        if (driverManagerDataSource != null) {
-            System.out.println("Database is connected.");
-        } else {
-            System.out.println("Database is not connected");
-        }
+        jdbcTemplate.execute("INSERT INTO register.Persons VALUES(101, 'KALE', 'SHRIKANT', 'MAHARASTRA', 'AMRAVATI')");
+
+        System.out.println("Record inserted successfully.!");
+
     }
 }
