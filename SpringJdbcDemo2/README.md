@@ -59,9 +59,4 @@ ____________________
                  String sqlString = "INSERT INTO register.Persons VALUES(" + personID + ", " + lastName + ", " + firstName + ", " + address + ", " + city + ")";
                  int updateResult = jdbcTemplate.update("INSERT INTO register.Persons VALUES (?,?,?,?,?)", new Object[] {personID,lastName,firstName,address,city});
                  System.out.println(updateResult + " Record inserted successfully.!");`
-             B.You can use the one more version of update() method.
-                int update(String sqlStatement, PreparedStatementSetter);
-                String sqlStatement: parameter accept the sql statement in the form of String.
-                PreparedStatementSetter : this is the interface which is used to pass the parameter to Sql Statment
-                Just we need to use it in anonymous inner class.
          5. use **JdbcTemplate** methods to work with database.
