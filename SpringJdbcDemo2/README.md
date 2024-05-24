@@ -47,8 +47,7 @@ ____________________
          4. call the **JdbcTemplate** bean in client application and work with database.
              A. int update(String sqlStatement, Object[]) : 
                 This method is used for pass the run time parameter to SQL statement witout using SQL injection technique and statement get executed succssfully return 1 otherwise 0.
-   
-               ApplicationContext applicationContext = new AnnotationConfigApplicationContext(DbConfig.class);
+               `ApplicationContext applicationContext = new AnnotationConfigApplicationContext(DbConfig.class);
                  JdbcTemplate jdbcTemplate = (JdbcTemplate) applicationContext.getBean("jdbcTemplate");
                  Scanner scanner = new Scanner(System.in);
                  System.out.println("Enter PersonID | FirstName | LastName | Address  | City :\n");
@@ -59,7 +58,10 @@ ____________________
                  String city = scanner.next();
                  String sqlString = "INSERT INTO register.Persons VALUES(" + personID + ", " + lastName + ", " + firstName + ", " + address + ", " + city + ")";
                  int updateResult = jdbcTemplate.update("INSERT INTO register.Persons VALUES (?,?,?,?,?)", new Object[] {personID,lastName,firstName,address,city});
-                 System.out.println(updateResult + " Record inserted successfully.!"); 
-5. use **JdbcTemplate** methods to work with database.
-
-
+                 System.out.println(updateResult + " Record inserted successfully.!");`
+             B.You can use the one more version of update() method.
+                int update(String sqlStatement, PreparedStatementSetter);
+                String sqlStatement: parameter accept the sql statement in the form of String.
+                PreparedStatementSetter : this is the interface which is used to pass the parameter to Sql Statment
+                Just we need to use it in anonymous inner class.
+         5. use **JdbcTemplate** methods to work with database.
