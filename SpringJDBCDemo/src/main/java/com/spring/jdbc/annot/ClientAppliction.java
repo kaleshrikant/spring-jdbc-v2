@@ -2,7 +2,6 @@ package com.spring.jdbc.annot;
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
 public class ClientAppliction {
     public static void main(String[] args) {
