@@ -16,6 +16,7 @@ dependencies {
     implementation group: 'org.springframework', name: 'spring-context', version: '5.3.33'
     implementation group: 'org.springframework', name: 'spring-jdbc', version: '5.3.33'
     implementation group: 'mysql', name: 'mysql-connector-java', version: '8.0.33'
+    compileOnly group: 'org.projectlombok', name: 'lombok', version: '1.18.32'
 }
 
 test {
